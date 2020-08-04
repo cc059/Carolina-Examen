@@ -45,9 +45,11 @@
 
 
 #####CREACION DE CLUSTER EN GCP
-1 gcloud config set compute/zone us-central1-a
-2 gcloud container clusters create my-cluster
-3 gcloud container clusters get-credentials my-cluster
-4 kubectl create deployment hello-server --image=nginx:1.14.2
-5 kubectl expose deployment hello-server --type=LoadBalancer --port 8080
-6 kubectl get service
+gcloud config set compute/zone us-central1-a
+gcloud container clusters create my-cluster
+gcloud container clusters get-credentials my-cluster
+nano app.yaml
+kubectl apply -f app.yaml
+kubectl expose deployment nginx-deployment --type=LoadBalancer  --port 80 --target-port 80
+kubectl get service
+
