@@ -1,0 +1,53 @@
+### Creacion de vm con TERRAFORM
+## ### History Commands
+
+ 3 sudo yum update -y
+ 4 sudo dnf install unzip -y
+ 5 sudo unzip terraform_0.12.26_linux_amd64.zip
+ 6 ls
+ 7 sudo mv terraform /usr/local/bin/
+ 8 echo $"export PATH=$PATH:$(pwd)" >> ~/.bash_profile
+ 9 source ~/.bash_profile
+ 10 sudo dnf install nano -y
+ 11 mkdir proyecto-terraform
+ 12 nano ec2.tf
+ 13 terraform init
+ 14 terraform plan
+ 15 terraform apply
+
+
+
+### INSTALACION DE TOMCAT
+### History commands
+6 sudo dnf update -y
+7 sudo dnf install java-1.8.0-openjdk-devel -y
+8 sudo dnf install wget -y
+9 sudo dnf install nano -y
+10 sudo wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.57/bin/apache -tomcat-8.5.57.tar.gz
+11 ls
+12 sudo mv apache-tomcat-8.5.57.tar.gz /usr/local/
+13 cd /usr/local/
+14 ls
+15 sudo tar -xvzf apache-tomcat-8.5.57.tar.gz
+16 ls
+17 sudo mv apache-tomcat-8.5.57 /usr/local/tomcat9
+18 sudo useradd -r tomcat
+19 sudo chown -R tomcat:tomcat /usr/local/tomcat9
+20 sudo nano /etc/systemd/system/tomcat.service
+21 sudo systemctl daemon-reload
+22 sudo systemctl start tomcat.service
+23 sudo systemctl enable tomcat.service
+25 Sudo nano /usr/local/tomcat9/conf/tomcat-users.xml
+26 sudo nano /usr/local/tomcat9/conf/tomcat-users.xml
+27 sudo nano /usr/local/tomcat9/webapps/manager/META-INF/context.xml
+28 sudo nano /usr/local/tomcat9/webapps/host-manager/META-INF/context.xml
+29 sudo systemctl restart tomcat.service
+
+
+#####CREACION DE CLUSTER EN GCP
+1 gcloud config set compute/zone us-central1-a
+2 gcloud container clusters create my-cluster
+3 gcloud container clusters get-credentials my-cluster
+4 kubectl create deployment hello-server --image=nginx:1.14.2
+5 kubectl expose deployment hello-server --type=LoadBalancer --port 8080
+6 kubectl get service
